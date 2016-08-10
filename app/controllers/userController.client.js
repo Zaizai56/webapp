@@ -25,13 +25,5 @@
          updateHtmlElement(userObject, profileId, 'id');   
       }
 
-      if (profileUsername !== null) {
-         updateHtmlElement(userObject, profileUsername, 'username');   
-      }
-
-      if (profileRepos !== null) {
-         updateHtmlElement(userObject, profileRepos, 'publicRepos');   
-      }
-
    }));
 })();

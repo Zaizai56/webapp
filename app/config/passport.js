@@ -1,6 +1,7 @@
 'use strict';
 
 var GitHubStrategy = require('passport-github').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var User = require('../models/users');
 var configAuth = require('./auth');
 
@@ -22,7 +23,7 @@ module.exports = function (passport) {
 	},
 	function (token, refreshToken, profile, done) {
 		process.nextTick(function () {
-			User.findOne({ 'github.id': profile.id }, function (err, user) {
+			User.findOne({ 'user.id': profile.id }, function (err, user) {
 				if (err) {
 					return done(err);
 				}
@@ -32,10 +33,8 @@ module.exports = function (passport) {
 				} else {
 					var newUser = new User();
 
-					newUser.github.id = profile.id;
-					newUser.github.username = profile.username;
-					newUser.github.displayName = profile.displayName;
-					newUser.github.publicRepos = profile._json.public_repos;
+					newUser.user.id = profile.id;
+					newUser.user.displayName = profile.displayName;
 					newUser.nbrClicks.clicks = 0;
 
 					newUser.save(function (err) {
@@ -49,4 +48,37 @@ module.exports = function (passport) {
 			});
 		});
 	}));
+	
+	passport.use(new FacebookStrategy({
+    clientID: configAuth.facebook.clientID,
+    clientSecret: configAuth.facebook.clientSecret,
+    callbackURL: configAuth.facebook.callbackURL
+	},
+	function(accessToken, refreshToken, profile, done) {
+		process.nextTick(function () {
+			User.findOne({ 'user.id': profile.id }, function (err, user) {
+				if (err) {
+					return done(err);
+				}
+
+				if (user) {
+					return done(null, user);
+				} else {
+					var newUser = new User();
+
+					newUser.user.id = profile.id;
+					newUser.user.displayName = profile.displayName;
+
+					newUser.save(function (err) {
+						if (err) {
+							throw err;
+						}
+console.log(newUser);
+						return done(null, newUser);
+					});
+				}
+			});
+		});
+  }
+));
 };
