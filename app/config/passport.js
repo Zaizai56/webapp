@@ -73,7 +73,6 @@ module.exports = function (passport) {
 						if (err) {
 							throw err;
 						}
-console.log(newUser);
 						return done(null, newUser);
 					});
 				}

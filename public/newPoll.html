@@ -10,8 +10,8 @@
 
 	<header>
 		<p>Welcome, <span id="display-name"></span>!</p>
+		<a class="menu" href="/">Home</a>
 		<a class="menu" href="/profile">Profile</a>
-		<a class="menu" href="/newPoll">New Poll</a>
 		<p>|</p>
 		<a class="menu" href="/logout">Logout</a>
 	</header>
@@ -24,12 +24,12 @@
 		</div>
 	
 		<div class="container">
-			<p>Give your voice on these:</p>
-			<br />
-			<div class="btn-container">
-				<button type="submit" class="btn btn-add">CLICK ME!</button>
-				<button class="btn btn-delete">RESET</button>
-			</div>
+		    <form>
+                <br>
+                <input type="text" placeholder="What's your question to the world ?" name="name"><br>
+                <input type="text" placeholder="Possible Voice" name="email"><br>
+            </form> <br>
+            <button type="btn" class="btn-postPoll">Send</button>
 		</div>
 		
 		<script type="text/javascript" src="common/ajax-functions.js"></script>

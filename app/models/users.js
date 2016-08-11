@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var User = new Schema({
 	user: {
 		id: String,
-		displayName: String,
+		displayName: String
 	},
    nbrClicks: {
         clicks: Number

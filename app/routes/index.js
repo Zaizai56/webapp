@@ -36,6 +36,11 @@ module.exports = function (app, passport) {
 			res.sendFile(path + '/public/profile.html');
 		});
 
+	app.route('/newPoll')
+		.get(isLoggedIn, function (req, res) {
+			res.sendFile(path + '/public/newPoll.html');
+	});
+
 	app.route('/api/:id')
 		.get(isLoggedIn, function (req, res) {
 			res.json(req.user.user);
