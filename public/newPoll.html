@@ -3,7 +3,7 @@
 <html>
 
 	<head>
-		<title>YourVoice - show your voice to the world</title>
+		<title>YourVoice - shout your voice to the world</title>
 		
 		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
 	</head>
@@ -26,15 +26,14 @@
 		<div class="container">
 		    <form>
                 <br>
-                <input type="text" placeholder="What's your question to the world ?" name="name"><br>
-                <input type="text" placeholder="Possible Voice" name="email"><br>
+                <input type="text" placeholder="What's your question to the world ?" id="pollQuestion"><br>
+                <input type="text" placeholder="Possible Voice" id="voice1"><br>
             </form> <br>
-            <button type="btn" class="btn-postPoll">Send</button>
+            <button type="btn" id="btn-postPoll">Send</button>
 		</div>
 		
 		<script type="text/javascript" src="common/ajax-functions.js"></script>
-		<script type="text/javascript" src="controllers/clickController.client.js"></script>
-		<script type="text/javascript" src="controllers/userController.client.js"></script>
+		<script type="text/javascript" src="controllers/pollCreator.server.js"></script>
 	</body>
 
 </html>

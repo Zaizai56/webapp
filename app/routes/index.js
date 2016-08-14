@@ -64,6 +64,11 @@ module.exports = function (app, passport) {
 			failureRedirect: '/login'
 		}));
 
+	app.route('/api/postPoll')
+		.get(isLoggedIn, clickHandler.getClicks)								//to update
+		.post(isLoggedIn, clickHandler.postPoll)
+		.delete(isLoggedIn, clickHandler.resetClicks);							//to update
+
 	app.route('/api/:id/clicks')
 		.get(isLoggedIn, clickHandler.getClicks)
 		.post(isLoggedIn, clickHandler.addClick)
