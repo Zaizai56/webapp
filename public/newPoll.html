@@ -24,16 +24,15 @@
 		</div>
 	
 		<div class="container">
-		    <form>
+		    <form action="/postPoll" method="post">
                 <br>
-                <input type="text" placeholder="What's your question to the world ?" id="pollQuestion"><br>
-                <input type="text" placeholder="Possible Voice" id="voice1"><br>
+                <input type="text" placeholder="What's your question to the world ?" name="pollQuestion"><br>
+                <input type="text" placeholder="Possible Voice" name="voice1"><br>
+                <button type="btn" id="btn-postPoll">Send</button>
             </form> <br>
-            <button type="btn" id="btn-postPoll">Send</button>
 		</div>
-		
-		<script type="text/javascript" src="common/ajax-functions.js"></script>
-		<script type="text/javascript" src="controllers/pollCreator.server.js"></script>
+		<script type="text/javascript" src="controllers/pollLoader.server.js"></script>
+		<script>console.log('page loaded');</script>
 	</body>
 
 </html>

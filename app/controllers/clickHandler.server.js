@@ -1,14 +1,8 @@
 'use strict';
 
 var Users = require('../models/users.js');
-var Poll = require('../models/polls.js');
 
 function ClickHandler () {
-	
-	this.postPoll = function (req, res) {
-		Poll
-			.create({ 'poll.displayName': req.user.user.id }, { '_id': false })
-	};
 	
 	this.getClicks = function (req, res) {
 		Users
