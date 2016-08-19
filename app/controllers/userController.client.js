@@ -8,7 +8,7 @@
    var displayName = document.querySelector('#display-name');
 
    function updateHtmlElement (data, element, userProperty) {
-      element.innerHTML = data[userProperty];
+      element.innerHTML = data[userProperty]; 
    }
 
    ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, function (data) {
