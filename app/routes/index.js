@@ -3,7 +3,7 @@
 var path = process.cwd();
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 var pollCreator = require(path + '/app/controllers/pollCreator.server.js');
-var pollLoader = require(path + '/app/controllers/loader.server.js');
+var pollLoader = require(path + '/app/controllers/pollLoader.server.js');
 
 
 module.exports = function (app, passport) {
@@ -70,7 +70,7 @@ module.exports = function (app, passport) {
 			failureRedirect: '/login'
 		}));
 	
-	app.route('/api/load/polls')
+	app.route('/api/:load/polls')
 		.get(isLoggedIn, pollLoader);
 
 	app.route('/api/:id/clicks')

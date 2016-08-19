@@ -5,7 +5,7 @@
       element.innerHTML = data[userProperty]; 
    }
     
-    ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', appUrl + '/api/load/polls', function (data) {
+    ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', appUrl + '/api/:load/polls', function (data) {
         var pollObject = JSON.parse(data);
         
         console.log("code is running");
