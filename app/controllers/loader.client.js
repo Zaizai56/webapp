@@ -1,19 +1,21 @@
 'use strict';
 
 (function () {
+    
+    var loadUrl = appUrl + '/api/:load/polls';
+    
     function updateHtmlElement (data, element, userProperty) {
       element.innerHTML = data[userProperty]; 
    }
-    
-    ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', appUrl + '/api/:load/polls', function (data) {
+
+    ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', loadUrl, function (data) {
         var pollObject = JSON.parse(data);
-        
-        console.log("code is running");
-//        var i=0;
-//        for (i=0;i<10;i++){
-//        updateHtmlElement(posts[i], 'poll'+i, 'question');
-//    }
-    
-    console.log("reached here");
+        var i=0;
+        for (i=0;i<10;i++){
+            if (pollObject[i].question != null){
+                updateHtmlElement(pollObject[i], document.querySelector('#poll'+i), 'question');
+            }
+        }
     }));
-});
+
+})();
