@@ -5,7 +5,7 @@
     var loadUrl = appUrl + '/api/:load/polls';
     
     function updateHtmlElement (data, element, userProperty) {
-      element.innerHTML = data[userProperty]; 
+      element.innerHTML = "<a href='/poll?id="+ data["_id"] +"'>" + data[userProperty] + "</a>"; 
    }
 
     ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', loadUrl, function (data) {

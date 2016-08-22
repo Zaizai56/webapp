@@ -14,14 +14,16 @@ require('./app/config/passport')(passport);
 
 
 //**************
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 mongoose.connect(process.env.MONGO_URI);
 
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/common', express.static(process.cwd() + '/app/common'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.set('view engine', 'jade');
+app.set('views', __dirname + '/public/views');
 
 app.use(session({
 	secret: 'secretClementine',

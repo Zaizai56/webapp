@@ -71,7 +71,13 @@ module.exports = function (app, passport) {
 		}));
 	
 	app.route('/api/:load/polls')
-		.get(isLoggedIn, pollLoader);
+		.get(pollLoader.index);
+		
+	app.get('/poll', function(req, res){
+		var poll = clickHandler.poll(req.query.id);
+		console.log(poll);
+		res.render('poll', { question: req.query.id });
+	});
 
 	app.route('/api/:id/clicks')
 		.get(isLoggedIn, clickHandler.getClicks)
