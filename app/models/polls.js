@@ -15,10 +15,6 @@ var Poll = new Schema({
         result3: Number,
         voice4: String,
         result4: Number,
-        voice5: String,
-        result5: Number,
-        voice6: String,
-        result6: Number
    }
 });
 

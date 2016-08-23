@@ -81,7 +81,8 @@ module.exports = function (app, passport) {
             .findOne({ '_id': req.query.id },{ '_id': false })
             .exec(function(err, polls) {
                 if (err) { throw err; }
-		res.render('poll', { question: polls.question, voice1: polls.voices.voice1});
+                
+		res.render('poll', { question: polls.question, voice1: polls.voices.voice1, voice2: polls.voices.voice2, voice3: polls.voices.voice3, voice4: polls.voices.voice4});
             });
 	});
 

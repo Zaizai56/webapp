@@ -6,7 +6,7 @@ function pollLoader () {
     
     this.index = function (req, res) {
         Poll
-            .find().limit(10)
+            .find().limit(10).sort('-creationDate')
             .exec(function (err, polls) {
                 if (err) { throw err; }
 

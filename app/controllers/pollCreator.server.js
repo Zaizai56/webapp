@@ -7,6 +7,9 @@ function pollCreator (req,res) {
     	newPoll.creationDate = Date.now();
 	    newPoll.question = req.body.pollQuestion;
 		newPoll.voices.voice1 = req.body.voice1;
+		newPoll.voices.voice2 = req.body.voice2;
+		newPoll.voices.voice3 = req.body.voice3;
+		newPoll.voices.voice4 = req.body.voice4;
 	Poll.create(newPoll);
 	console.log(newPoll);
                 //***add ajax function to redirect to the voting page after post***
