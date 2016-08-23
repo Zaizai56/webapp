@@ -2,6 +2,7 @@ doctype html
 html(lang="en")
 	head
 		title YourVoice - shout your voice to the world
+		link(href='/public/css/main.css', rel='stylesheet')
 	header
 		p Welcome, 
 			span(id="display-name")
@@ -9,6 +10,8 @@ html(lang="en")
 		a(class="menu",href="/profile") Profile
 		p |
 		a(class="menu",href="/newPoll") New Poll
+		p |
+		a(class="menu",href="/") home
 		p |
 		a(class="menu",href="/logout") Logout
 

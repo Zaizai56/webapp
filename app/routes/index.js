@@ -3,7 +3,8 @@
 var path = process.cwd();
 var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 var pollCreator = require(path + '/app/controllers/pollCreator.server.js');
-var pollLoader = require(path + '/app/controllers/pollLoader.server.js');
+var PollLoader = require(path + '/app/controllers/pollLoader.server.js');
+var Poll = require('../models/polls.js');
 
 
 module.exports = function (app, passport) {
@@ -17,6 +18,8 @@ module.exports = function (app, passport) {
 	}
 
 	var clickHandler = new ClickHandler();
+	var pollLoader = new PollLoader();
+
 
 	app.route('/')
 		.get(isLoggedIn, function (req, res) {
@@ -71,12 +74,15 @@ module.exports = function (app, passport) {
 		}));
 	
 	app.route('/api/:load/polls')
-		.get(pollLoader.index);
+		.get(isLoggedIn, pollLoader.index);
 		
 	app.get('/poll', function(req, res){
-		var poll = clickHandler.poll(req.query.id);
-		console.log(poll);
-		res.render('poll', { question: req.query.id });
+		Poll
+            .findOne({ '_id': req.query.id },{ '_id': false })
+            .exec(function(err, polls) {
+                if (err) { throw err; }
+		res.render('poll', { question: polls.question, voice1: polls.voices.voice1});
+            });
 	});
 
 	app.route('/api/:id/clicks')
