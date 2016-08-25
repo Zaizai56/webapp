@@ -14,7 +14,18 @@ function pollLoader () {
                 }
             );
     };
-        
+
+    this.poll = function (req, res, id) {
+        Poll
+            .findOne({ '_id': id },{ '_id': false })
+            .exec(function(err, polls) {
+                if (err) { throw err; }
+                console.log(polls);
+
+                return polls;
+                }
+            );
+        };
 }
 
 module.exports = pollLoader;

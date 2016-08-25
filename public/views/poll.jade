@@ -3,6 +3,7 @@ html(lang="en")
 	head
 		title YourVoice - shout your voice to the world
 		link(href='/public/css/main.css', rel='stylesheet')
+		p(id="id") !{poll}
 	header
 		p Welcome, 
 			span(id="display-name")
@@ -21,9 +22,18 @@ html(lang="en")
 			br
 			p(class="clementine-text") YourVoice
 			|!{question}
-			|!{voice1}
-			|!{voice2}
-			|!{voice3}
-			|!{voice4}
-script(src="common/ajax-functions.js")
-script(src="controllers/userController.client.js")
+			span(id='voice1')
+			span(id='result1')
+			button.btn(id="btn1") voice1
+			span(id='voice2')
+			span(id='result2')
+			button.btn(id="btn2") voice2
+			span(id='voice3')
+			span(id="result3")
+			button.btn(id="btn3") voice3
+			span(id='voice4')
+			span(id="result4")
+			button.btn(id="btn4") voice4
+script(type="text/javascript",src="common/ajax-functions.js")
+script(type="text/javascript",src="controllers/userController.client.js")
+script(type="text/javascript",src="controllers/voiceController.client.js")

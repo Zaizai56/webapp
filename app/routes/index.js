@@ -75,14 +75,33 @@ module.exports = function (app, passport) {
 	
 	app.route('/api/:load/polls')
 		.get(isLoggedIn, pollLoader.index);
+	
+	app.get('/api/:load/poll', function (req, res){
+		console.log(req.query);
+		var voice = 'voices.result' + req.query.voice;
+		var increment = {};
+		increment[voice] = 1;
+		Poll
+			.findOneAndUpdate({ '_id': req.query.id }, { $inc: increment })
+			.exec(function (err, result) {
+				if (err) { throw err; }
+			console.log(result);	
+			res.json(result);
+			});
+   	});
 		
 	app.get('/poll', function(req, res){
 		Poll
             .findOne({ '_id': req.query.id },{ '_id': false })
             .exec(function(err, polls) {
                 if (err) { throw err; }
-                
-		res.render('poll', { question: polls.question, voice1: polls.voices.voice1, voice2: polls.voices.voice2, voice3: polls.voices.voice3, voice4: polls.voices.voice4});
+        console.log(polls)        ;
+		res.render('poll', {
+			question: polls.question,
+			voice1: polls.voices.voice1,
+			result1: polls.voices.result1,
+			poll: req.query.id
+		});
             });
 	});
 

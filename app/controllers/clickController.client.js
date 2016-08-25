@@ -6,8 +6,6 @@
    var deleteButton = document.querySelector('.btn-delete');
    var clickNbr = document.querySelector('#click-nbr');
    var apiUrl = appUrl + '/api/:id/clicks';
-   var postURL = "https://webapp-zaizai.c9users.io/api/postPoll";
-
 
    function updateClickCount (data) {
       var clicksObject = JSON.parse(data);
