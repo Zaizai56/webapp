@@ -23,9 +23,38 @@
 			res2.innerHTML = data.voices.result2;
 			res3.innerHTML = data.voices.result3;
 			res4.innerHTML = data.voices.result4;
+			drawChart(data);
 		});
+    google.charts.load('current', {packages: ['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
 
     
+    function drawChart(json) {
+      // Define the chart to be drawn.
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'voices');
+      data.addColumn('number', 'Percentage');
+      data.addRows([
+        [json.voices.voice1, json.voices.result1],
+        [json.voices.voice2, json.voices.result2],
+        [json.voices.voice3, json.voices.result3],
+        [json.voices.voice4, json.voices.result4]
+      ]);
+
+    var options = {title:'Voices of the world... so far.',
+                animation: {
+                    duration: 1500,
+                    easing: 'out',
+                    startup: true},
+                width:600,
+                height:500,
+                legend: 'none'};
+
+      // Instantiate and draw the chart.
+      var chart = new google.visualization.ColumnChart(document.getElementById('myPieChart'));
+      chart.draw(data, options);
+    }
+
     voice1.addEventListener('click', function () {
 	    ajaxFunctions.ajaxRequest('GET', loadUrl+"&voice=1", function (data1) {
             data1 = JSON.parse(data1);
@@ -51,7 +80,7 @@
 	    ajaxFunctions.ajaxRequest('GET', loadUrl+"&voice=4", function (data4) {
             data4 = JSON.parse(data4);
 			res4.innerHTML = data4.voices.result4;
-		});
+	    });
     }, false);
 
 })();

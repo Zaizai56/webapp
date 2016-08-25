@@ -81,10 +81,11 @@ module.exports = function (app, passport) {
 		var voice = 'voices.result' + req.query.voice;
 		var increment = {};
 		increment[voice] = 1;
+		console.log(increment);
 		Poll
-			.findOneAndUpdate({ '_id': req.query.id }, { $inc: increment })
+			.findOneAndUpdate({ '_id': req.query.id }, { $inc: increment }, {new: true})
 			.exec(function (err, result) {
-				if (err) { throw err; }
+				if (err) { throw err}
 			console.log(result);	
 			res.json(result);
 			});
