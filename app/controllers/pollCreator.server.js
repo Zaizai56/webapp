@@ -12,6 +12,7 @@ function pollCreator (req,res) {
 		newPoll.voices.voice4 = req.body.voice4;
 	Poll.create(newPoll);
 	console.log(newPoll);
+	res.redirect(process.env.APP_URL + 'poll?id=' + newPoll.id);
                 //***add ajax function to redirect to the voting page after post***
 }
 
