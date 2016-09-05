@@ -1,0 +1,26 @@
+/********* styling index.html **********/
+
+.poll-list {
+	text-align: center;
+
+    margin: auto;
+
+	width: 400px;
+	height: 35px;
+	font-size: 18px;
+	margin-bottom: 10px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #f5b335;
+	border-radius: 4px;
+	color: black;
+}
+
+.poll-list:hover{
+	background-color: #f5b335;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+}

@@ -24,19 +24,26 @@ body {
 }
 
 header {
+	background-color: #444;
 	color: #00BCD4;
-	height: 56px;
-	margin: 0 0 14px 0;
+	height: 80px;
 	text-align: center;
+	padding-top: 3px;
+	margin-bottom: 30px;
 }
 
 p {
 	margin: 8px 0 0 0;
 }
 
-.container p {
+.container {
 	text-align: center;
 	padding: 0;
+	margin: auto;
+}
+
+footer{
+	text-align: center;
 }
 
 /****** Header Styling ******/
@@ -104,20 +111,14 @@ img {
 	display: block;
 }
 
-.clementine-text { /* Styling for the Clementine.js text */
+.yourVoice-text {
 	padding: 0;
-	margin: -25px 0 0 0;
 	font-weight: 500;
-	font-size: 60px;
+	font-size: 30px;
 	color: #FFA000;
 }
 
 /****** Click Styling ******/
-
-.btn-container {	/* Styling for the div that contains the buttons */
-	margin: -10px auto 0 auto;
-	text-align: center;
-}
 
 .btn {	/* Styling for buttons */
 	margin: 0 8px;
@@ -140,15 +141,6 @@ img {
 	transform: scale(0.9, 0.9);
 	-webkit-transform: scale(0.9, 0.9);
 	-moz-transform: scale(0.9, 0.9);
-}
-
-.btn-delete {	/* Styling for delete button */
-	background-color: #ECEFF1;
-	color: #212121;
-}
-
-#click-nbr {
-	font-weight: 400;
 }
 
 /****** Profile Styling ******/
@@ -201,4 +193,10 @@ span {
 	color: #FFFFFF;
 	display: inline;
 	margin: 0;
+}
+
+#VoiceChart{
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
 }

@@ -22,7 +22,7 @@ module.exports = function (app, passport) {
 
 
 	app.route('/')
-		.get(isLoggedIn, function (req, res) {
+		.get(function (req, res) {
 			res.sendFile(path + '/public/index.html');
 		});
 
@@ -46,6 +46,11 @@ module.exports = function (app, passport) {
 		.get(isLoggedIn, function (req, res) {
 			res.sendFile(path + '/public/newPoll.html');
 	});
+
+	app.route('/mypolls')
+		.get(isLoggedIn, function (req, res) {
+			res.sendFile(path + '/public/mypolls.html');
+		});
 
 	app.route('/postPoll')
 		.post(isLoggedIn, pollCreator);
@@ -74,40 +79,31 @@ module.exports = function (app, passport) {
 		}));
 	
 	app.route('/api/:load/polls')
-		.get(isLoggedIn, pollLoader.index);
+		.get(pollLoader.index);
+
+	app.route('/api/:load/poll')
+		.get(pollLoader.poll);
 	
-	app.get('/api/:load/poll', function (req, res){
-		console.log(req.query);
-		var voice = 'voices.result' + req.query.voice;
-		var increment = {};
-		increment[voice] = 1;
-		console.log(increment);
-		Poll
-			.findOneAndUpdate({ '_id': req.query.id }, { $inc: increment }, {new: true})
-			.exec(function (err, result) {
-				if (err) { throw err}
-			console.log(result);	
-			res.json(result);
-			});
-   	});
+	app.route('/api/:vote/poll')
+		.post(pollLoader.vote)
+
+	app.route('/api/:load/mypolls')
+		.get(pollLoader.mypolls);
+
+	app.route('/delete')
+		.get(pollLoader.deletepoll);	
 		
 	app.get('/poll', function(req, res){
 		Poll
             .findOne({ '_id': req.query.id },{ '_id': false })
             .exec(function(err, polls) {
                 if (err) { throw err; }
-        console.log(polls)        ;
-		res.render('poll', {
-			question: polls.question,
-			voice1: polls.voices.voice1,
-			result1: polls.voices.result1,
-			poll: req.query.id
-		});
+                var vote = '/api/:vote/poll?id='+req.query.id;
+				res.render('poll', {
+					question: polls.question,
+					poll: req.query.id,
+					urlVote: vote
+				});
             });
 	});
-
-	app.route('/api/:id/clicks')
-		.get(isLoggedIn, clickHandler.getClicks)
-		.post(isLoggedIn, clickHandler.addClick)
-		.delete(isLoggedIn, clickHandler.resetClicks);
 };
