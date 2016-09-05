@@ -1,5 +1,3 @@
-'use strict';
-
 var express = require('express');
 var routes = require('./app/routes/index.js');
 var mongoose = require('mongoose');
@@ -7,7 +5,7 @@ var passport = require('passport');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var app = express();
-require('dotenv').load();
+//require('dotenv').load();
 require('./app/config/passport')(passport);
 //**************
 
