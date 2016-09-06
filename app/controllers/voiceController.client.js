@@ -13,6 +13,7 @@
         poll = JSON.parse(poll);
 //check if the user have already voted
     var votecheck = false;
+    var l=0;
     for (l=0;l<poll.voicer.length;l++){
       if(poll.voicer[l] == poll.userIP) votecheck = true;
     }
