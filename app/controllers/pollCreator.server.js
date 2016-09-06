@@ -19,8 +19,7 @@ function pollCreator (req,res) {
 		newPoll.voicer = []
 	Poll.create(newPoll);
 	console.log(newPoll);
-	res.redirect(process.env.APP_URL + 'poll?id=' + newPoll.id);
-                //***add ajax function to redirect to the voting page after post***
+	res.redirect('/poll?id=' + newPoll.id);
 }
 
 module.exports = pollCreator;
