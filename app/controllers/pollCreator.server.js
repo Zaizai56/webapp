@@ -9,7 +9,6 @@ function pollCreator (req,res) {
 	if (req.body.voice3 != "") voices.push({'voice': req.body.voice3,'result':0});
 	if (req.body.voice4 != "") voices.push({'voice': req.body.voice4,'result':0});
 	var results = [0,0,0,0]
-	console.log(req.user.user);
     var newPoll = new Poll();
     	newPoll.creationDate = Date.now();
     	newPoll.creator = req.user.user.id;

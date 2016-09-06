@@ -1,7 +1,6 @@
 'use strict';
 
 var path = process.cwd();
-var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 var pollCreator = require(path + '/app/controllers/pollCreator.server.js');
 var PollLoader = require(path + '/app/controllers/pollLoader.server.js');
 var Poll = require('../models/polls.js');
@@ -17,7 +16,6 @@ module.exports = function (app, passport) {
 		}
 	}
 
-	var clickHandler = new ClickHandler();
 	var pollLoader = new PollLoader();
 
 

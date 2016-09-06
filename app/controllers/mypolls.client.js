@@ -7,22 +7,17 @@
 
 //ajax call to get the list of polls for this user
     ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', loadUrl, function (data) {
-        console.log("received");
-        console.log(data);
         var data = JSON.parse(data);
         var loading = document.getElementById('loading-gif');
         loading.parentNode.removeChild(loading);
         var i=0;
-        console.log(data);
         for (i=0;i<data.length;i++){
             createPollElement (data[i])
             }
     }));
 
     function createPollElement (val) {
-        console.log('creating element');
         var element = document.getElementById('mypolls');
-        console.log(val);
 
 //create the element to display the poll: div inside a hyperlink
         var master = document.createElement("div");
