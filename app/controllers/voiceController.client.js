@@ -20,7 +20,7 @@
     var l = 0;
     var votecheck = false
     for (l=0;l<poll.voicer.length;l++){
-      if(poll.voicer == poll.userIP) votecheck = true;
+      if(poll.voicer[l] == poll.userIP) votecheck = true;
     }
     if (votecheck === false) drawChart(poll.voices);
 	});

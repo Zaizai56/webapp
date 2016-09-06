@@ -48,17 +48,25 @@ function pollLoader () {
             .findOne({ '_id': req.query.id } )
             .exec(function (err,polls){
                 var k = 0;
+                var check = false;
                 for (k=0;k<polls.voicer.length;k++){
-                    if (polls.voicer[k] == userIP) res.redirect('/');
+                    if (polls.voicer[k] == userIP){
+                        check == true;
+                    };
+                };
+
+                if(check === true) {
+                    res.redirect('/');
+                } else {
+                    Poll
+                        .findOneAndUpdate({ '_id': req.query.id }, { $inc: increment, $push: {'voicer': userIP} }, {new: true})
+                        .exec(function (err, result) {
+                            if (err) { throw err}
+                            var vote = '/api/:vote/poll?id='+req.query.id;
+                            res.redirect('/poll?id='+req.query.id);
+                })
                 }
             })
-        Poll
-            .findOneAndUpdate({ '_id': req.query.id }, { $inc: increment, $push: {'voicer': userIP} }, {new: true})
-            .exec(function (err, result) {
-                if (err) { throw err}
-                var vote = '/api/:vote/poll?id='+req.query.id;
-                res.redirect('/poll?id='+req.query.id);
-            });
     }
 
     this.deletepoll = function (req, res){
