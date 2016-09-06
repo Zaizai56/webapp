@@ -27,8 +27,11 @@
         for (i=0;i<poll.voices.length;i++){
             createElem(poll.voices[i].voice,i);
         }
-      var submitVoice = document.createElement('input')
-      submitVoice.setAttribute('type','submit','action','send','id','submitVoice','class','btn');
+      var submitVoice = document.createElement('input');
+      submitVoice.type = 'submit';
+      submitVoice.action = 'send';
+      submitVoice.setAttribute('id','submitVoice');
+      submitVoice.setAttribute('class','btn');
       element.appendChild(submitVoice);
 
     }
@@ -48,6 +51,7 @@ google.charts.setOnLoadCallback(drawChart);
     radio.type = "radio";
     radio.name = 'voices';
     radio.value = n;
+    radio.setAttribute('class','voice');
 
 //link the radio button to the label
     label.appendChild(radio);

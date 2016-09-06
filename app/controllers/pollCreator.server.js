@@ -8,6 +8,7 @@ function pollCreator (req,res) {
 //This loop will go through the list until it reach an undefined value -> voice is non-existing 
 	var voices = [];
 	var h = 0;
+	console.log(req.body);
 	for (h=0;h>=0;h++){
 		var v = 'voice' + h;
 		if (req.body[v] != undefined) {

@@ -125,10 +125,14 @@ img {
 	margin-bottom: :20px;
 }
 
+.voice{
+	margin-bottom: 10px;
+}
+
 /****** Click Styling ******/
 
 .btn {	/* Styling for buttons */
-	margin: 0 8px;
+	margin: 20px 8px;
 	color: white;
 	background-color: #00BCD4;
 	display: inline-block;

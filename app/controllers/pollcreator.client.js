@@ -10,12 +10,14 @@
 //monitor the event on button to add new voice
 	addVoice.addEventListener('click', function () {
 		var newVoice = document.createElement("input");
-		newVoice.setAttribute('type','text','value','','name','voice'+voiceNb);
+		newVoice.type = 'text';
+		newVoice.name = 'voice'+voiceNb;
+		voiceNb++
+		newVoice.placeholder = 'voice #'+(voiceNb);
 
 //add a new voice and increment the voices counter
 		elem.appendChild(newVoice);
 		elem.appendChild(document.createElement('br'));
-		voiceNb++
 	}, false);
 
 })();
