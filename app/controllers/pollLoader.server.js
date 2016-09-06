@@ -55,7 +55,7 @@ function pollLoader () {
                     };
                 };
 
-                if(check === true) {
+                if(check) {
                     res.redirect('/');
                 } else {
                     Poll

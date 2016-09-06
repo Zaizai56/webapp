@@ -18,11 +18,11 @@
         }
 //call to the Google chart function
     var l = 0;
-    var votecheck = false
+    var votecheck = true
     for (l=0;l<poll.voicer.length;l++){
-      if(poll.voicer[l] == poll.userIP) votecheck = true;
+      if(poll.voicer[l] == poll.userIP) votecheck = false;
     }
-    if (votecheck === false) drawChart(poll.voices);
+    if (votecheck) drawChart(poll.voices);
 	});
 
 google.charts.load('current', {packages: ['corechart']});
