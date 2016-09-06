@@ -18,9 +18,9 @@
         }
 //call to the Google chart function
     var l = 0;
-    var votecheck = true
+    var votecheck = false;
     for (l=0;l<poll.voicer.length;l++){
-      if(poll.voicer[l] == poll.userIP) votecheck = false;
+      if(poll.voicer[l] == poll.userIP) votecheck = true;
     }
     if (votecheck) drawChart(poll.voices);
 	});
