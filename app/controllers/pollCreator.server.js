@@ -2,7 +2,10 @@
 
 var Poll = require('../models/polls.js');
 
+//function to create the poll in the mongoDB
 function pollCreator (req,res) {
+//set the voices object. It will be used to store the list of voices. The total number of voices is variable.
+//This loop will go through the list until it reach an undefined value -> voice is non-existing 
 	var voices = [];
 	var h = 0;
 	for (h=0;h>=0;h++){
@@ -13,6 +16,7 @@ function pollCreator (req,res) {
 			h=-2;
 		};
 	};
+//call to mongoDB to create the poll
     var newPoll = new Poll();
     	newPoll.creationDate = Date.now();
     	newPoll.creator = req.user.user.id;
@@ -21,6 +25,8 @@ function pollCreator (req,res) {
 		newPoll.voicer = []
 	Poll.create(newPoll);
 	console.log(newPoll);
+
+//redirect the user to the page of this poll
 	res.redirect('/poll?id=' + newPoll.id);
 }
 

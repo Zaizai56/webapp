@@ -11,17 +11,17 @@
 //call to obtain the poll content
 	ajaxFunctions.ajaxRequest('GET', loadUrl, function (poll) {
         poll = JSON.parse(poll);
-//call to the Google chart function
-    var l = 0;
+//check if the user have already voted
     var votecheck = false;
     for (l=0;l<poll.voicer.length;l++){
       if(poll.voicer[l] == poll.userIP) votecheck = true;
     }
+//if the req ip have already voted, display the google graph
     if (votecheck) {
       drawChart(poll.voices);
     } else {
       var i = 0;
-      console.log(poll);
+//if the req ip have not yet voted,
 //go through the list of voices and call to the radio button builder function
         for (i=0;i<poll.voices.length;i++){
             createElem(poll.voices[i].voice,i);
@@ -33,6 +33,7 @@
     }
 	});
 
+//load the google chart
 google.charts.load('current', {packages: ['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 

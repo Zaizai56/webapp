@@ -1,5 +1,7 @@
 'use strict';
 
+//this function get the name of the user, and display it in the header of the page.
+//if the user is unidentified, this function will fall in error
 (function () {
 
    var profileId = document.querySelector('#profile-id') || null;

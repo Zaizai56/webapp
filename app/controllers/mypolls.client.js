@@ -16,6 +16,8 @@
             }
     }));
 
+
+//function to create the list of polls
     function createPollElement (val) {
         var element = document.getElementById('mypolls');
 
