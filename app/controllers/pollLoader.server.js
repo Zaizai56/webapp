@@ -40,7 +40,7 @@ function pollLoader () {
         var increment = {};
         var v = 'voices.' + req.body.voices + '.result';
         increment[v] = 1;
-        var userIP = req['x-forwarded-for'];
+        var userIP = rreq.headers['x-forwarded-for'];
         Poll
             .findOne({ '_id': req.query.id } )
             .exec(function (err,polls){
