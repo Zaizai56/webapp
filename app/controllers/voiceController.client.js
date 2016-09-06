@@ -3,26 +3,34 @@
 (function () {
 //get the id# of the poll
     var id = document.getElementById('id').name;
+    var element = document.getElementById('poll-datalist');
 
 //variable storing the url to get the poll content
 	var loadUrl = appUrl + '/api/:load/poll?id='+id;
 
 //call to obtain the poll content
 	ajaxFunctions.ajaxRequest('GET', loadUrl, function (poll) {
-    console.log(poll);
         poll = JSON.parse(poll);
-        var i = 0;
-//go through the list of voices and call to the radio button builder function
-        for (i=0;i<poll.voices.length;i++){
-            createElement(poll.voices[i].voice,i);
-        }
 //call to the Google chart function
     var l = 0;
     var votecheck = false;
     for (l=0;l<poll.voicer.length;l++){
       if(poll.voicer[l] == poll.userIP) votecheck = true;
     }
-    if (votecheck) drawChart(poll.voices);
+    if (votecheck) {
+      drawChart(poll.voices);
+    } else {
+      var i = 0;
+      console.log(poll);
+//go through the list of voices and call to the radio button builder function
+        for (i=0;i<poll.voices.length;i++){
+            createElem(poll.voices[i].voice,i);
+        }
+      var submitVoice = document.createElement('input')
+      submitVoice.setAttribute('type','submit','action','send','id','submitVoice','class','btn');
+      element.appendChild(submitVoice);
+
+    }
 	});
 
 google.charts.load('current', {packages: ['corechart']});
@@ -30,9 +38,7 @@ google.charts.setOnLoadCallback(drawChart);
 
 
 //radio button builder function
-    function createElement (val,n) {
-    var element = document.getElementById('poll-datalist');
-
+    function createElem (val,n) {
 //create a elements: radio button, br and label
     var label = document.createElement("label");
     var radio = document.createElement("input");

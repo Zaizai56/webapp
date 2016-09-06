@@ -20,7 +20,6 @@ function pollLoader () {
             .findOne({ '_id': req.query.id },{ '_id': false })
             .exec(function(err, polls) {
                 if (err) { throw err; }
-                console.log(polls);
                 polls['userIP'] = req.headers['x-forwarded-for'];
                 console.log(polls);
                 res.json(polls);
@@ -48,14 +47,14 @@ function pollLoader () {
             .findOne({ '_id': req.query.id } )
             .exec(function (err,polls){
                 var k = 0;
+                console.log('ok');
                 var check = false;
                 for (k=0;k<polls.voicer.length;k++){
-                    if (polls.voicer[k] == userIP){
-                        check == true;
-                    };
+                    if (polls.voicer[k] == userIP) check = true;
+                                    console.log(check);
                 };
 
-                if(check) {
+                if (check) {
                     res.redirect('/');
                 } else {
                     Poll
@@ -74,9 +73,11 @@ function pollLoader () {
             .findOne({'_id': req.query.id})
             .exec(function (err, poll) {
                 if (err) { throw err; }
-                poll.remove(function (err){
-                    if (err) {throw err;}
-                })
+                if(poll['creator'] == req.user.user.id){
+                    poll.remove(function (err){
+                        if (err) {throw err;}
+                    })
+                }
                 res.redirect('/mypolls');
                 }
             );

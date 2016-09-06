@@ -35,7 +35,6 @@ module.exports = function (passport) {
 
 					newUser.user.id = profile.id;
 					newUser.user.displayName = profile.displayName;
-					newUser.nbrClicks.clicks = 0;
 
 					newUser.save(function (err) {
 						if (err) {
@@ -50,9 +49,9 @@ module.exports = function (passport) {
 	}));
 	
 	passport.use(new FacebookStrategy({
-    clientID: configAuth.facebook.clientID,
-    clientSecret: configAuth.facebook.clientSecret,
-    callbackURL: configAuth.facebook.callbackURL
+	    clientID: configAuth.facebook.clientID,
+	    clientSecret: configAuth.facebook.clientSecret,
+	    callbackURL: configAuth.facebook.callbackURL
 	},
 	function(accessToken, refreshToken, profile, done) {
 		process.nextTick(function () {

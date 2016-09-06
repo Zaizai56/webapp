@@ -144,10 +144,27 @@ img {
 	outline: none;
 }
 
-.btn:active {	/* Scale the button down by 10% when clicking on button */
+.btn:active, .btn-add:active {	/* Scale the button down by 10% when clicking on button */
 	transform: scale(0.9, 0.9);
 	-webkit-transform: scale(0.9, 0.9);
 	-moz-transform: scale(0.9, 0.9);
+}
+
+.btn-add{
+	margin-bottom:30px;
+	background-color: #EEE;
+	font-weight: 500;
+	border: solid;
+	border-width: 1px;
+	border-color: #FFA000;
+	border-radius: 3px;
+	padding:5px 5px;
+}
+
+.btn-add:focus{
+	color:white;
+	background-color: black;
+
 }
 
 /****** Profile Styling ******/
@@ -183,16 +200,11 @@ span {
 	font-weight: 500;
 }
 
-.github-profile > img {
-	padding-top: 16px;
-	margin-bottom: 16px;
-}
-
-.github-profile .menu:hover {
+.menu:hover {
 	color: #FFA000;
 }
 
-.github-profile .menu:active {
+.menu:active {
 	color: #FF630D;
 }
 

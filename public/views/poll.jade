@@ -5,27 +5,25 @@ html(lang="en")
 		link(href='/public/css/main.css', rel='stylesheet')
 		meta(id="id",name="#{poll}")
 	header
-		p Welcome, 
-			span(id="display-name")
+		p 
+			span(id="display-name") -
 		a(class="menu",href="/") Home
 		p |
-		a(class="menu",href="/newPoll") New Poll
+		a(class="menu",href="/mypolls") My Polls
 		p |
-		a(class="menu",href="/profile") Profile
+		a(class="menu",href="/newPoll") New Poll
 		p |
 		a(class="menu",href="/logout") Logout
 
 	body
 		.container
-			img(src="/public/img/YourVoice.png")
+			img(src="https://s3.ap-northeast-2.amazonaws.com/portfolio-zaizai/YourVoice/YourVoice.png")
 			p(class="yourVoice-text") YourVoice
 			h2|!{question}
 			div(id="VoiceChart")
 			form(action="#{urlVote}",method="POST")
 				br
 				div(id='poll-datalist')
-				br
-				input(type="submit", action="send",class="btn")
 
 script(type="text/javascript",src="common/ajax-functions.js")
 script(type="text/javascript",src="controllers/userController.client.js")

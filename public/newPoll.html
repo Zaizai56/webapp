@@ -10,19 +10,17 @@
 	</head>
 
 	<header>
-		<p>Welcome, <span id="display-name"></span>!</p>
+		<p><span id="display-name">-</span></p>
 		<a class="menu" href="/">Home</a>
 		<p>|</p>
 		<a class="menu" href="/mypolls">My Polls</a>
-		<p>|</p>
-		<a class="menu" href="/profile">Profile</a>
 		<p>|</p>
 		<a class="menu" href="/logout">Logout</a>
 	</header>
 
 	<body>
 		<div class="container">
-			<img src="/public/img/YourVoice.png" />
+			<img src="https://s3.ap-northeast-2.amazonaws.com/portfolio-zaizai/YourVoice/YourVoice.png" />
 			<br />
 			<p class="yourVoice-text">YourVoice</p>
 		</div>
@@ -30,12 +28,13 @@
 		<div class="container">
 		    <form action="/postPoll" method="post">
                 <br>
-                <input type="text" placeholder="What's your question to the world ?" name="pollQuestion"><br>
-                <input type="text" value="Einstein" name="voice1"><br>
-				<input type="text" value="Banana" name="voice2"><br>
-				<input type="text" value="South" name="voice3"><br>
-				<input type="text" value="Chuck Norris" name="voice4"><br>
-                <button class="btn" id="btn-postPoll">Send</button>
+				<div id="pollForm">
+	                <input type="text" placeholder="What's your question to the world ?" name="pollQuestion"><br>
+	                <input type="text" placeholder="voice #1" name="voice0"><br>
+					<input type="text" placeholder="voice #2" name="voice1"><br>
+				</div>
+				<button type="button" class="btn-add" id="addVoice">add</button><br>
+                <button type="submit" class="btn" action="send" id="btn-postPoll">Send</button>
             </form> <br>
 		</div>
 	</body>
@@ -44,4 +43,5 @@
 	</footer>
 		<script type="text/javascript" src="common/ajax-functions.js"></script>
 		<script type="text/javascript" src="controllers/userController.client.js"></script>
+		<script type="text/javascript" src="controllers/pollcreator.client.js"></script>
 </html>

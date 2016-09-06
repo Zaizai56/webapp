@@ -5,7 +5,7 @@
     var loadUrl = appUrl + '/api/:load/polls';
     var element = document.getElementById("lastPolls");
     
-    function createElement (data) {
+    function createElem (data) {
     var master = document.createElement("div");
     master.setAttribute('class','poll-list');
     var para = document.createElement("a");
@@ -22,9 +22,9 @@
         var loading = document.getElementById('loading-gif');
         loading.parentNode.removeChild(loading);
         var i=0;
-        for (i=0;i<10;i++){
+        for (i=0;i<pollObject.length;i++){
             if (pollObject[i].question != null){
-                 createElement(pollObject[i]);
+                 createElem(pollObject[i]);
             }
         }
     }));
