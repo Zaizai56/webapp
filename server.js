@@ -6,7 +6,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var app = express();
 //unactivated for heroku deployment
-//require('dotenv').load();
+require('dotenv').load();
 require('./app/config/passport')(passport);
 //**************
 
