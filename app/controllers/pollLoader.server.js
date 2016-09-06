@@ -20,6 +20,9 @@ function pollLoader () {
             .findOne({ '_id': req.query.id },{ '_id': false })
             .exec(function(err, polls) {
                 if (err) { throw err; }
+                console.log(polls);
+                polls['userIP'] = req.headers['x-forwarded-for'];
+                console.log(polls);
                 res.json(polls);
                 }
             );

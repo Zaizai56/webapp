@@ -9,6 +9,7 @@ var Poll = new Schema({
     creator: Number,
     voices: Object,
     voicer: Object,
+    userIP: String,
 });
 
 module.exports = mongoose.model('Poll', Poll);

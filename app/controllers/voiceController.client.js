@@ -9,6 +9,7 @@
 
 //call to obtain the poll content
 	ajaxFunctions.ajaxRequest('GET', loadUrl, function (poll) {
+    console.log(poll);
         poll = JSON.parse(poll);
         var i = 0;
 //go through the list of voices and call to the radio button builder function
@@ -16,7 +17,12 @@
             createElement(poll.voices[i].voice,i);
         }
 //call to the Google chart function
-    drawChart(poll.voices);
+    var l = 0;
+    var votecheck = false
+    for (l=0;l<poll.voicer.length;l++){
+      if(poll.voicer == poll.userIP) votecheck = true;
+    }
+    if (votecheck === false) drawChart(poll.voices);
 	});
 
 google.charts.load('current', {packages: ['corechart']});

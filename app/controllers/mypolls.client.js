@@ -5,6 +5,7 @@
     var loadUrl = appUrl + '/api/:load/mypolls';
     var element = document.getElementById("mypolls");
 
+//ajax call to get the list of polls for this user
     ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', loadUrl, function (data) {
         console.log("received");
         console.log(data);
@@ -29,7 +30,7 @@
         var a = document.createElement("a");
         var node = document.createTextNode(val.question);
         a.setAttribute('href',"/poll?id=" + val['_id']);
-
+//add the element in the html content
     master.appendChild(node);
     a.appendChild(master);
 
